@@ -5,7 +5,7 @@
 # Razonamiento
 
 Supongamos que tenemos un conjunto S, con todas las combinaciones de 1 y 2 que dan como resultado N.
-Podemos usar una estructura *(<<Cantidad de 1>>, <<Cantidad de 2>>)* para cada elemento de S.
+para cada elemento de S, podemos usar una estructura *(<<Cantidad de 1>>, <<Cantidad de 2>>)*.
 
 **Por ejemplo, veamos para una escalera de 3 peldaños:**
 `S = {(1,1),(3,0)}`
@@ -19,3 +19,13 @@ Perm(1,1) es 2: Podemos subir 1 escalon y luego 2, o 2 y luego 1.
 Perm(3,0) es 1: Podemos subir de a 1 escalon 3 veces.
 *(obviamente solo tomamos en cuenta las permutaciones que no son equivalentes)*
 `Sol = 2+1 = 3`
+
+**Ahora tenemos que crear S**
+Sabemos que N es un número posivo mayor a 0.
+Para cualquier valor de N, tenemos un elemento del conjunto S es (N,0)
+*(La suma de N unos me da N)*
+
+Podemos crear los demas elementos del conjunto intercambiando un 2 por dos 1
+Así:
+ `(N-2,1),(N-4,2),(N-6,3)...`
+Hasta que la cantidad de unos llegue a 0 o 1.
