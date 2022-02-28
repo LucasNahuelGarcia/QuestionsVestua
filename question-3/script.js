@@ -14,8 +14,28 @@ console.log(`Running question #3 with args ${args}`)
  * @returns {Boolean} Returns true if string is valid.
  */
 function parenthesisChecker(str) {
-  // TODO: Implement validation logic
-  return true;
+  let stack = [];
+  
+  for(let char of str){
+    if(isParenthesis(char)){
+      if(stack.length > 0 && canCloseParenthesis(char, stack[stack.length - 1])) stack.pop();
+      else stack.push(char);
+    }
+  }
+  
+  return stack.length == 0;
+}
+
+function isParenthesis(char){
+  if(char == '(' || char == ')' || char == '{' || char == '}' || char == '[' || char == ']') return true;
+  return false;
+}
+
+function canCloseParenthesis(parenthesis, parenthesisToClose){
+  if(parenthesis == ')' && parenthesisToClose == '(') return true;
+  if(parenthesis == '}' && parenthesisToClose == '{') return true;
+  if(parenthesis == ']' && parenthesisToClose == '[') return true;
+  return false;
 }
 
 const isValid = parenthesisChecker(args);
