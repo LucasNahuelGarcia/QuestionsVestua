@@ -3,6 +3,7 @@
  * This file would be executed with the following command (N=100):
  * $ node scritp.js 100
  */
+var fs = require("fs");
 
 function fact(n) {
     var res = 1;
@@ -15,9 +16,6 @@ function calcularOrdenesNoRedundantes(elementoDeS) {
     var suma = 0;
     for(valor of elementoDeS)
         suma += valor;
-    console.log(suma);
-    console.log (fact(suma));
-    console.log (calcularOrdenesRedundantesPorOrden(elementoDeS));
     res = fact(suma) / calcularOrdenesRedundantesPorOrden(elementoDeS);
     return res;
 }
@@ -68,4 +66,9 @@ for(var combinacion of combinaciones) {
 console.log("------------------------------------------------------------");
 
 console.log(respuesta);
+fs.writeFile("output.txt", respuesta.toString(), (err) => {
+    if(err)
+        throw err;
+    console.log("Archivo respuesta escrito correctamete.");
+});
 
